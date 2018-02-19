@@ -1,0 +1,77 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+	<div class="padding_side"></div>
+<div class="ui inverted vertical menu">
+  <a href="/about" class=" item">
+    About
+  </a>
+  <a href="/activity" class="active item">
+    Gallery
+  </a>
+  <a href="/board" class="item">
+    YB Board
+  </a>
+  <a href="/boardob" class="item">
+    OB Board
+  </a>
+</div>
+</div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= act.image %>">
+                <div class="caption-full">
+                    <div class="pull-right">
+                    <h6> <%=act.created.toDateString()%></h6>
+                    <h6><em>작성자 : <%= act.author.username+"\n"%> </em> </h6>
+                    </div>
+                    <h3><a><%=act.name%></a></h3>
+                    <p><%- act.description.replace(/(?:\r\n|\r|\n)/g, '<br />') %></p>
+                    <% if(currentUser && act.author.id.equals(currentUser._id)||currentUser&&currentUser.isAdmin){ %>
+                        <a class="btn btn-warning btn-xs" href="/activity/<%=act._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/activity/<%=act._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="ui header">
+                            댓글
+                        </div>                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ui header">
+                            <div class="text-right">
+                                <a class="btn btn-success btn-sm" href="/activity/<%= act._id %>/comments/new">Add New Comment</a>
+                            </div>
+                        </div>
+                    </div>
+                <% act.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div style="margin-top:1.0em;" class="container col-md-12">
+                        <div class="ui raised segment">
+                            <strong><%= comment.author.username %></strong>
+                            <p>
+                                <%= comment.text %> 
+                            </p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a class="btn btn-xs btn-warning" href="/activity/<%=act._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form class="delete-form" action="/activity/<%=act._id%>/comments/<%=comment._id%>?_method=DELETE", method="POST">
+                                    <input type="submit"  class="btn btn-xs btn-danger" value="Delete">
+                                
+                                </form>
+                            <% } %>
+                        </div></div>
+                    </div>
+                <% }) %>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

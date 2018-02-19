@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<h1 style="text-align: center; padding-top: 3em;">로그인</h1>
+
+<div style="width:30%; margin: 25px auto;">
+<form action="/login" method="POST">
+    <div class="form-group">
+    <input class="form-control" type="text" name="username" placeholder="Username">
+    </div><div class="form-group">
+    <input class="form-control" type="password" name="password" placeholder="Password">
+    </div><div class="form-group">
+    <button class="btn btn-lg btn-primary btn-block">Login</button>
+    </div>
+</form>
+<p>비밀번호를 분실하신 경우 <a href="/forgot">여기</a>를 눌러주시기 바랍니다.</p>
+</div>
+
+<% include ./partials/footer %>

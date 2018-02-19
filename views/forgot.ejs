@@ -1,0 +1,20 @@
+<% include ./partials/header %>
+<div class="row" style="width:30%;margin:25px auto;">
+    <div class="col-md-12">
+        <form action="/forgot" method="POST">
+            <legend>비밀번호 재설정</legend>
+            <div class="form-group">
+                <label for="email">이메일 주소</label>
+                <input type="email" name="email" autofocus class="form-control">
+            </div>
+            <h6>계정을 만들때 등록한 메일 주소로 암호 재설정 메일이 발송 됩니다.</h6>
+            <div class="form-group">
+                <input type="submit" class="btn btn-lg btn-primary" value="Reset Password">
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<% include ./partials/footer %>

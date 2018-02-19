@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+<h1 style="text-align:center;">Create new Activity</h1>
+<div style="width:30%; margin:30px auto;">
+<form action="/activity" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+    <input class="form-control" type="text" name="name" placeholder="name">
+    </div><div class="form-group">
+    <!--<input class="form-control" type="text" name="image" placeholder="img url">-->
+    <label for="image">이미지 업로드</label>
+    <input type="file" id="image" name="image" accept="image/*" required>
+    </div><div class="form-group">
+    <textarea class="form-control" name="description" placeholder="description"></textarea>
+    </div><div class="form-group">
+    <button class="btn btn-lg btn-block btn-primary" >Submit</button></div>
+</form>
+<a href="/activity">Back</a>
+</div>
+
+</div>
+</div>
+<% include ../partials/footer %>

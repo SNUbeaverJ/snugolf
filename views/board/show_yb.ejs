@@ -1,0 +1,81 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="padding_side"></div>
+        <div class="col-md-3">
+            <div class="ui inverted vertical menu">
+              <a href="/about" class=" item">
+                About
+              </a>
+              <a href="/activity" class="item">
+                Gallery
+              </a>
+              
+              <a href="/board" class="active item">
+                YB Board
+              </a>
+              <a href="/boardob" class="item">
+                OB Board
+              </a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="ui main text segment">
+            <div class="ui huge header"><%=blog.title%></div>
+            <div class="ui top attached">
+                <hr>
+                    <div class="content blog_date text-right">
+                    <span><%=blog.created.toDateString()%></span>        
+                    </div>
+                    
+                    <div class="description">
+                        <h4><%-blog.body.replace(/(?:\r\n|\r|\n)/g, '<br />')%></h4>
+                    </div>
+                <% if(currentUser && blog.author.id.equals(currentUser._id)||currentUser&&currentUser.isAdmin){ %>
+                        <a class="btn btn-warning btn-xs" href="/board/<%=blog._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/board/<%=blog._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                    <div class="empty"></div>
+            </div>
+            
+            
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="ui header">
+                            댓글
+                        </div>                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ui header">
+                    <div class="text-right">
+                        <a class="btn btn-success btn-sm" href="/board/<%= blog._id %>/comments/new">Add New Comment</a>
+                            </div>
+                        </div>                        
+                    </div>
+                <% blog.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div style="margin-top:1.0em;" class="container col-md-12">
+                        <div class="ui raised segment">
+                            <strong><%= comment.author.username %></strong>
+                            <p>
+                                <%= comment.text %> 
+                            </p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a class="btn btn-xs btn-warning" href="/board/<%=blog._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form class="delete-form" action="/board/<%=blog._id%>/comments/<%=comment._id%>?_method=DELETE", method="POST">
+                                    <input type="submit"  class="btn btn-xs btn-danger" value="Delete">
+                                </form>
+                            <% } %>
+                        </div></div>
+                    </div>
+                <% }) %>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

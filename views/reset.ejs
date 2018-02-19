@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+<div class="row" style="width:30%;margin:25px auto;">
+    <div class="col-md-12">
+        <form action="/reset/<%= token%>" method="POST">
+            <legend>Reset Password</legend>
+            <div class="form-group">
+                <label for="password">New Password</label>
+                <input type="password" name="password" placeholder="새로운 비밀번호" autofocus class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="confirm">Confirm Password</label>
+                <input type="password" name="confirm" value="" placeholder="비밀번호 확인" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-lg btn-primary" value="비밀번호 변경">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<% include ./partials/footer %>

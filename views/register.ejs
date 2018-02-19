@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+<h1 style="text-align: center; padding-top: 3em;">계정을 등록합니다</h1>
+<div class="well well-sm">
+<p style="text-align: center">주장단의 승인이 있어야 계정 등록이 가능합니다. 승인 코드를 받지 못하셨으면 주장단에 문의 바랍니다.</p>
+</div>
+<div style="width:30%; margin: 25px auto;">
+
+<form action="/register" method="post">
+    <div class="form-group">
+    <input class="form-control" type="text" name="username" placeholder="Username">
+    </div><div class="form-group">
+    <input class="form-control" type="text" name="email" placeholder="Email">
+    </div><div class="form-group">
+    <input class="form-control" type="password" name="password" placeholder="Password">
+    </div><div class="form-group">
+    <input class="form-control" type="text" name="CODE" placeholder="AUTH KEY">
+    </div><div class="form-group">
+    <button class="btn btn-lg btn-primary btn-block">Sign Up</button>
+    </div>
+</form>
+</div>
+
+
+<% include ./partials/footer %>
