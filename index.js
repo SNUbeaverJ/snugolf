@@ -20,7 +20,8 @@ var commentRoutes=require("./routes/comments"),
     noticeRoutes=require("./routes/notice"),
     indexRoutes=require("./routes/index");
     
-mongoose.connect("mongodb://localhost/snugolf");
+// mongoose.connect("mongodb://localhost/snugolf");
+mongoose.connect("mongodb://snugolf:snugolf0201@ds241668.mlab.com:41668/snugolf");
 app.use(express.static(__dirname+"/public"));
 app.use(methodOver("_method"));
 app.use(flash());
