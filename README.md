@@ -4,4 +4,6 @@
 This is website built for Golf Team of Seoul National University
 
 website is approactable by
-"https://www.snugolf.me"
+"http://stormy-oasis-11561.herokuapp.com/"
+or
+"http://www.snugolf.me"
