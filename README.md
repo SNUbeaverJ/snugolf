@@ -3,3 +3,5 @@
 
 This is website built for Golf Team of Seoul National University
 
+website is approactable by
+"https://www.snugolf.me"
